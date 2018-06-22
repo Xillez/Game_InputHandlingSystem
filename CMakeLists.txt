@@ -15,12 +15,8 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 add_executable(${PROJECT_NAME} 
 	#src
 	${PROJECT_SOURCE_DIR}/source/src/main.cpp
-
-	# Datastruct 
-	#${PROJECT_SOURCE_DIR}/source/datastruct/Datastruct.cpp 
 	
-	#ecs
-	${PROJECT_SOURCE_DIR}/source/ecs/system/EntityManager.cpp
-	#${PROJECT_SOURCE_DIR}/source/entity/Entity.cpp
-	#${PROJECT_SOURCE_DIR}/source/components/Component.cpp
+	#input
+	${PROJECT_SOURCE_DIR}/source/input/InputHandler.cpp
+	${PROJECT_SOURCE_DIR}/source/input/InputInterface.cpp
 )
