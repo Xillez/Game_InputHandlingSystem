@@ -15,8 +15,22 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 add_executable(${PROJECT_NAME} 
 	#src
 	${PROJECT_SOURCE_DIR}/source/src/main.cpp
+	${PROJECT_SOURCE_DIR}/source/src/glfw_setup.cpp
 	
 	#input
 	${PROJECT_SOURCE_DIR}/source/input/InputHandler.cpp
 	${PROJECT_SOURCE_DIR}/source/input/InputInterface.cpp
 )
+
+if(UNIX)
+	find_package(GLEW REQUIRED)
+	find_package(OpenGL REQUIRED)
+	find_package(glfw3 3.2 REQUIRED)
+	
+	# Link the packages
+	target_link_libraries(${PROJECT_NAME}
+		PRIVATE ${OPENGL_LIBRARIES}
+		PRIVATE ${GLEW_LIBRARY}
+		PRIVATE glfw
+	)
+endif(UNIX)
