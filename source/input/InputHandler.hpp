@@ -50,5 +50,5 @@ public:
 	//std::string keyToString(Key key);
 
 private:
-	std::unordered_map<Key, bool> keystate;								//!< Posistion of entity.
+	std::unordered_map<Key, bool> keystate;							//!< Posistion of entity.
 };
