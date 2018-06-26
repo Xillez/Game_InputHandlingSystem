@@ -1,21 +1,19 @@
-#include "../header/globalVar.hpp"
-#include "global_function.hpp"
-#include "errorHandler.hpp"
-#include "../environment/Camera.hpp"
 #include "glfw_setup.hpp"
 
 #include <stdio.h>
+#include <glm/glm.hpp>
 
-GLFWwindow* helpers::glfw_setup() {
+GLFWwindow* glfw_setup() {
 
 	//tries to initialize glfw. NOTE: should be changed to cause fatal error.
 	if (!glfwInit())
 	{
-		glfw_errorCallback(0, "Could not initialize glfw");
+		printf("Could not initialize glfw\n");
+		//glfw_errorCallback(0, "Could not initialize glfw");
 		return nullptr;
 	}
 
-	glfwSetErrorCallback(glfw_errorCallback);
+	//glfwSetErrorCallback(glfw_errorCallback);
 
 	//Multisampling
 	glfwWindowHint(GLFW_SAMPLES, 4);
@@ -30,8 +28,7 @@ GLFWwindow* helpers::glfw_setup() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	// create window
-	glm::vec2 wSize = environment::Camera::windowSize();
-	GLFWwindow* window = glfwCreateWindow(wSize.x, wSize.y, "Exam", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(600, 600, "Framework", nullptr, nullptr);
 	// set window as active
 	glfwMakeContextCurrent(window);
 
@@ -44,7 +41,8 @@ GLFWwindow* helpers::glfw_setup() {
 	glewExperimental = GL_TRUE;
     // Initialize GLEW QUESTION: should this be moved to other file?
     if (glewInit() != GLEW_OK) {
-    	glfw_errorCallback(0, "Could not initialize glew");
+		printf("Could not initialize glew\n");    	
+		//glfw_errorCallback(0, "Could not initialize glew");
         glfwTerminate();
     }
 
@@ -54,8 +52,8 @@ GLFWwindow* helpers::glfw_setup() {
 	glLineWidth(3); 
 
 	// Error handeling
-	glEnable( GL_DEBUG_OUTPUT );
-	glDebugMessageCallback( (GLDEBUGPROC) gl_errorCallback, 0 );
+	//glEnable( GL_DEBUG_OUTPUT );
+	//glDebugMessageCallback( (GLDEBUGPROC) gl_errorCallback, 0 );
 
     return window;
 }
