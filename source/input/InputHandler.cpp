@@ -60,8 +60,11 @@ void InputHandler::update()
 
 bool InputHandler::getKeyState(Key key)
 {
+    // If the key exists, return it.
     if (isRegistered(key))
         return this->keystate[*std::find(this->keys.begin(), this->keys.end(), key)].second;
+
+    // Couldn't find it.
     return false;
 }
 
@@ -72,19 +75,24 @@ bool InputHandler::isRegistered(Key key)
 
 bool InputHandler::isActive(Key key)
 {
+    // If the key exists, return activation state.  
     if (this->keystate.find(key) != this->keystate.end())
-        return this->keystate.find(key)->second.first;
+        return this->keystate.find(key)->second.second;
+
+    // Couldn't find it.
     return false;
 }
 
 void InputHandler::activate(Key key)
 {
+    // If the key exists, set active.
     if (isRegistered(key))
         this->keystate.find(key)->second.second = true;
 }
 
 void InputHandler::deactivate(Key key)
 {
+    // If the key exists, set NOT active.
     if (isRegistered(key))
         this->keystate.find(key)->second.second = false;
 }
