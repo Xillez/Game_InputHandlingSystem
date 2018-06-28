@@ -24,7 +24,7 @@ void InputHandler::setCurrentWindow(GLFWwindow* window)
     this->window = window;
 }
 
-bool InputHandler::registerKey(Key key)
+bool InputHandler::registerKey(int key)
 {
     // If the key doesn't exists.
     if (!isRegistered(key))
@@ -38,7 +38,7 @@ bool InputHandler::registerKey(Key key)
     return false;
 }
 
-bool InputHandler::unregisterKey(Key key)
+bool InputHandler::unregisterKey(int key)
 {
     // If the key doesn't exists.
     if (isRegistered(key))
@@ -58,7 +58,7 @@ void InputHandler::update()
     //    ;
 }
 
-bool InputHandler::getKeyState(Key key)
+bool InputHandler::getKeyState(int key)
 {
     // If the key exists, return it.
     if (isRegistered(key))
@@ -68,12 +68,12 @@ bool InputHandler::getKeyState(Key key)
     return false;
 }
 
-bool InputHandler::isRegistered(Key key)
+bool InputHandler::isRegistered(int key)
 {
     return (std::find(this->keys.begin(), this->keys.end(), key) != this->keys.end());
 }
 
-bool InputHandler::isActive(Key key)
+bool InputHandler::isActive(int key)
 {
     // If the key exists, return activation state.  
     if (this->keystate.find(key) != this->keystate.end())
@@ -83,14 +83,14 @@ bool InputHandler::isActive(Key key)
     return false;
 }
 
-void InputHandler::activate(Key key)
+void InputHandler::activate(int key)
 {
     // If the key exists, set active.
     if (isRegistered(key))
         this->keystate.find(key)->second.second = true;
 }
 
-void InputHandler::deactivate(Key key)
+void InputHandler::deactivate(int key)
 {
     // If the key exists, set NOT active.
     if (isRegistered(key))
