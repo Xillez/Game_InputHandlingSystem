@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../template/template.hpp"
+
 #include <string>
 #include <vector>
 
@@ -149,9 +151,12 @@ public:
     };
 };
 
-typedef struct
+class Key
 {
+public:
     int value;
     bool pressed = false;
     bool active = false;
-} Key;
+
+    //EQUALS2X_OPERATOR(Key)
+};
