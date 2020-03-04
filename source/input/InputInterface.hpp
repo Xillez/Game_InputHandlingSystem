@@ -9,7 +9,7 @@
 
 // TODO: 
 // Backend:  
-//  - Make (key, value) list of all possible glfw keys
+//  X- Make (key, value) list of all possible glfw keys
 //  - Use onKeyPressed to get the event from the key, when mapping the key (or select form list)
 //  - Once time comes for key checking, the state of the specified key is read, then the state is updated.
 //
